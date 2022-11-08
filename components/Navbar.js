@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Navbar() {
     return (
       <nav>
@@ -15,18 +17,19 @@ export default function Navbar() {
               </label>
               <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
                 <li>
-                  <a className="justify-between">
+                  <Link href="/" className="justify-between">
                     Beranda
-                  </a>
+                  </Link>
                 </li>
-                <li><a>Tentang</a></li>
-                <li><a>
-                  Tulis Resep
-                  <span className="badge">Beta</span>
-                  </a>
+                <li><Link href="/about">Tentang</Link></li>
+                <li>
+                  <Link href="/tulis">
+                    Tulis Resep
+                    <span className="badge">Beta</span>
+                  </Link>
                 </li>
                 <li><div className="divider"></div> </li>
-                <li><a>Masuk</a></li>
+                <li><Link href="/login">Masuk</Link></li>
               </ul>
             </div>
           </div>
