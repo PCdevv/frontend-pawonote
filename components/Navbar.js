@@ -5,7 +5,7 @@ export default function Navbar() {
       <nav>
         <div className="navbar bg-accent">
           <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl">PawonNote</a>
+            <a className="btn btn-ghost normal-case text-xl">PawoNote</a>
           </div>
           <div className="flex-none gap-2">
             <div className="form-control">
