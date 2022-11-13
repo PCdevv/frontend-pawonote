@@ -6,16 +6,14 @@ export default function Login() {
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
                         <div className="items-center text-center card w-full">
-                            <label className="label">
-                                <span className="label-text font-bold text-5x1">Login!</span>
-                            </label>
+                            <h2 className="font-bold text-5x1 card-title">Login!</h2>
                         </div>
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username" className="input input-bordered input-primary w-full max-w-xs rounded-md"/>
+                        <input type="text" name="username" id="username" className="input input-bordered input-accent w-full max-w-xs rounded-md"/>
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" className="input input-bordered input-primary w-full max-w-xs rounded-md"/>
+                        <input type="password" name="password" id="password" className="input input-bordered input-accent w-full max-w-xs rounded-md"/>
                         <div className="card-actions justify-end">
-                            <button className="btn btn-primary">Masuk</button>
+                            <button className="btn btn-accent">Masuk</button>
                         </div>
                     </div>
                 </div>
