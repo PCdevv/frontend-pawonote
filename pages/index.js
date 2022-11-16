@@ -2,7 +2,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const res = await fetch('http://127.0.0.1:5000/notes');
+  const note = await res.json();
+  const notes = note.data;
+  
+  // console.log(notes);
+  return {
+    props: { notes }
+  }
+
+}
+
+export default function Home({ notes }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -21,8 +33,24 @@ export default function Home() {
           Foods & Beverages Sharing Platform!{' '}
         </p>
 
-        <div className="grid grid-cols-3 gap-4">
-          <div className="card w-96 bg-primary shadow-xl">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+          {notes.map((note, index) => (
+            <div className="card w-96 bg-ijo1 shadow-xl" key={note.id}>
+              <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
+              <div className="card-body text-white">
+                <h2 className="card-title textarea-ghost">
+                  {note.title}
+                  <div className="badge badge-secondary">NEW</div>
+                </h2>
+                <p>{note.description}</p>
+                <div className="card-actions justify-end">
+                  <div className="badge badge-outline">Fashion</div> 
+                  <div className="badge badge-outline">Products</div>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="card w-96 bg-ijo2 shadow-xl">
             <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
             <div className="card-body text-white">
               <h2 className="card-title">
@@ -36,7 +64,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card w-96 bg-primary shadow-xl">
+          <div className="card w-96 bg-ijo3 shadow-xl">
             <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
             <div className="card-body text-white">
               <h2 className="card-title">
@@ -50,7 +78,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card w-96 bg-primary shadow-xl">
+          <div className="card w-96 bg-cok1 shadow-xl">
             <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
             <div className="card-body text-white">
               <h2 className="card-title">
@@ -64,7 +92,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card w-96 bg-primary shadow-xl">
+          <div className="card w-96 bg-cok2 shadow-xl">
             <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
             <div className="card-body text-white">
               <h2 className="card-title">
@@ -78,7 +106,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card w-96 bg-primary shadow-xl">
+          <div className="card w-96 bg-cok3 shadow-xl">
             <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
             <div className="card-body text-white">
               <h2 className="card-title">
