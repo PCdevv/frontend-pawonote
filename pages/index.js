@@ -2,17 +2,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export const getStaticProps = async () => {
-  const res = await fetch('http://127.0.0.1:5000/notes');
-  const note = await res.json();
-  const notes = note.data;
+//export const getStaticProps = async () => {
+//  const res = await fetch('http://127.0.0.1:5000/notes');
+//  const note = await res.json();
+//  const notes = note.data;
   
   // console.log(notes);
-  return {
-    props: { notes }
-  }
+//  return {
+//    props: { notes }
+//  }
 
-}
+//}
 
 export default function Home({ notes }) {
   return (
@@ -34,7 +34,7 @@ export default function Home({ notes }) {
         </p>
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
-          {notes.map((note, index) => (
+          {/* {notes.map((note, index) => (
             <div className="card w-96 bg-ijo1 shadow-xl" key={note.id}>
               <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
               <div className="card-body text-white">
@@ -49,7 +49,7 @@ export default function Home({ notes }) {
                 </div>
               </div>
             </div>
-          ))}
+          ))} */}
           <div className="card w-96 bg-ijo2 shadow-xl">
             <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
             <div className="card-body text-white">
