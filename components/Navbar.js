@@ -1,11 +1,32 @@
 import Link from "next/link"
+import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 
-export default function Navbar() {
+export const getStaticProps = async () => {
+  const token = getCookie('access_token');
+  
+  return {
+    props: { token }
+  }
+}
+
+const handleClick = async (e) => {
+  e.preventDefault();
+  const token = getCookie('access_token');
+  // const input = { title, description, ingredients, steps, token };
+  // const note = await axios.post("http://127.0.0.1:5000/api/notes", input);
+  console.log(typeof token);
+  // typeof token
+  // if (user.status === 200) {
+  //     Router.push('/')
+  // }
+};
+
+export default function Navbar({ token }) {
     return (
       <nav>
         <div className="navbar bg-accent">
           <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl">PawoNote</a>
+            <a href="/" className="btn btn-ghost normal-case text-xl">PawoNote</a>
           </div>
           <div className="flex-none gap-2">
             <div className="form-control">
@@ -29,7 +50,12 @@ export default function Navbar() {
                   </Link>
                 </li>
                 <li><div className="divider"></div> </li>
-                <li><Link href="/login">Masuk</Link></li>
+                {token === undefined && (
+                  <li><Link href="/login">Masuk</Link></li>
+                )}
+                {typeof token === "string"  && (
+                  <li><Link href="/login" onClick={(e) => handleClick(e)}>Keluar</Link></li>
+                )}
               </ul>
             </div>
           </div>
