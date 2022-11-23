@@ -50,7 +50,7 @@ export default function Login() {
                         </div>
                     </div>
                 </form>
-                <button className="btn btn-accent" onClick={(e) => handleLogOut(e)}>Keluar</button>
+                {/* <button className="btn btn-accent" onClick={(e) => handleLogOut(e)}>Keluar</button> */}
             </div>
         </div>
     )

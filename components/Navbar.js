@@ -1,24 +1,19 @@
 import Link from "next/link"
 import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
+import Router from "next/router";
 
 export const getStaticProps = async () => {
-  const token = getCookie('access_token');
+  const res = await getCookie('access_token');
+  const token = await res.json()
   
   return {
-    props: { token }
+    props: { token: token }
   }
 }
 
-const handleClick = async (e) => {
-  e.preventDefault();
-  const token = getCookie('access_token');
-  // const input = { title, description, ingredients, steps, token };
-  // const note = await axios.post("http://127.0.0.1:5000/api/notes", input);
-  console.log(typeof token);
-  // typeof token
-  // if (user.status === 200) {
-  //     Router.push('/')
-  // }
+const handleLogOut = async () => {
+  deleteCookie("access_token")
+  Router.push('/')
 };
 
 export default function Navbar({ token }) {
@@ -50,12 +45,8 @@ export default function Navbar({ token }) {
                   </Link>
                 </li>
                 <li><div className="divider"></div> </li>
-                {token === undefined && (
-                  <li><Link href="/login">Masuk</Link></li>
-                )}
-                {typeof token === "string"  && (
-                  <li><Link href="/login" onClick={(e) => handleClick(e)}>Keluar</Link></li>
-                )}
+                <li><Link href="/login">Masuk</Link></li>
+                <li><Link href="/" onClick={(e) => handleLogOut(e)}>Keluar</Link></li>
               </ul>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import React, { useState } from "react";
 import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 
@@ -8,17 +8,24 @@ export default function Tulis() {
     const [description, setDescription] = useState("");
     const [ingredients, setIngredients] = useState("");
     const [steps, setSteps] = useState("");
+    const [img_url, setImg_url] = useState("");
     // const [cookies, setCookies] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const token = getCookie('access_token');
-        const input = { title, description, ingredients, steps, token };
+        // const formData = new FormData( )
+        // formData.append('title', title)
+        // formData.append('description', description)
+        // formData.append('ingredients', ingredients)
+        // formData.append('steps', steps)
+        // formData.append('img_url', img_url)
+        // console.log(formData);
+        const input = { title, description, ingredients, steps, token, img_url };
         const note = await axios.post("http://127.0.0.1:5000/api/notes", input);
-        console.log(note);
-        // if (user.status === 200) {
-        //     Router.push('/')
-        // }
+        if (note.status === 200) {
+            Router.push('/')
+        }
     };
 
     return (
@@ -29,7 +36,7 @@ export default function Tulis() {
               <div className="flex-col">
                 <div className="items-center text-center card w-full">
                   <label className="label">
-                    <input type="file" className="file-input file-input-bordered file-input-accent w-full max-w-xs" />
+                    <input type="file" name="img_url" className="file-input file-input-bordered file-input-accent w-full max-w-xs" onChange={(e) => setImg_url(e.target.value)} />
                   </label>
                 </div>
                 <div className="my-3">
