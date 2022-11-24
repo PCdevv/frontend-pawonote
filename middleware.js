@@ -16,4 +16,8 @@ export default async function middleware(req) {
     if (!token && url.includes('/admin')) {
         return NextResponse.redirect('http://localhost:3000/')
     }
+
+    if (!token && url.includes('/users')) {
+        return NextResponse.redirect('http://localhost:3000/')
+    }
 }

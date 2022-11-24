@@ -4,8 +4,8 @@ import React, { useContext, useState } from "react";
 import { getCookies, getCookie, setCookie, deleteCookie } from 'cookies-next';
 
 export default function Login() {
-    const [username, setUsername] = useState("satu");
-    const [password, setPassword] = useState("coba");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const credentials = { username, password };
 
