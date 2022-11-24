@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from 'next/link'
 
 export const getStaticPaths = async () => {
   const res = await fetch('http://127.0.0.1:5000/api/notes');
@@ -34,6 +35,11 @@ export default function Note({ note }) {
       <div className="card w-5/6 bg-base-100 shadow-xl ml-5 mr-5 shaadow-md p-0">
         <div className="card-body">
           <div className="flex-col">
+            <div className="my-3 flex justify-end">
+              <Link href={`/note/edit/${note.id}`}>
+                <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-yellow-300">Edit</button>
+              </Link>
+            </div>
             <div className="items-center text-center card w-full">
               <label className="label">
                 <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>

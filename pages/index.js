@@ -34,7 +34,7 @@ export default function Home({ notes }) {
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
           {notes.map((note, index) => (
-            <Link href={`/notes/${note.id}`}>
+            <Link href={`/note/${note.id}`}>
               <div className="card w-96 bg-ijo1 shadow-xl" key={note.id}>
                 <figure><Image src="/img/dummy.jpg" width={96} height={96} alt="Shoes" /></figure>
                 <div className="card-body text-white">

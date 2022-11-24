@@ -48,6 +48,7 @@ export default function Admin({ users }) {
             Router.push('/admin')
         }
     };
+    
     return (
         <div className="hero min-h-screen bg-primary">
             <div className="w-5/6 bg-base-100 shadow-xl ml-5 mr-5 shaadow-md p-0">
